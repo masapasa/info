@@ -6,24 +6,25 @@
     "start": "next start"
   },
   "dependencies": {
-    "@aws-amplify/ui-react": "^1.2.19",
+    "@aws-amplify/ui-react": "^1.2.21",
     "@tailwindcss/typography": "^0.4.1",
-    "aws-amplify": "^4.3.1",
+    "aws-amplify": "^4.3.3",
     "easymde": "^2.15.0",
-    "next": "^11.1.2",
+    "next": "^12.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-markdown": "^7.0.1",
+    "react-markdown": "^7.1.0",
     "react-simplemde-editor": "^5.0.2",
     "uuid": "^8.3.2",
     "zen-observable-ts": "^1.1.0"
   },
   "devDependencies": {
-    "@types/node": "^16.10.3",
-    "@types/react": "^17.0.27",
+    "@types/node": "^16.11.6",
+    "@types/react": "^17.0.33",
+    "@types/uuid": "^8.3.1",
     "autoprefixer": "^10.3.7",
-    "postcss": "^8.3.9",
-    "tailwindcss": "^2.2.16",
-    "typescript": "^4.4.3"
+    "postcss": "^8.3.11",
+    "tailwindcss": "^2.2.17",
+    "typescript": "^4.4.4"
   }
 }

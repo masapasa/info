@@ -15,7 +15,6 @@ const initialState: Post = {
 
 function CreatePost() {
   const [post, setPost] = useState<Post>(initialState);
-  const { title, content } = post;
   const router = useRouter();
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>) {
@@ -36,8 +35,10 @@ function CreatePost() {
       authMode: "AMAZON_COGNITO_USER_POOLS",
     });
 
-    router.push(`/posts/${post.id}`);
+    router.push(`/posts/${id}`);
   }
+
+  const { title, content } = post;
 
   return (
     <div>
@@ -48,11 +49,11 @@ function CreatePost() {
         onChange={onChange}
         name="title"
         placeholder="Title"
-        value={post.title}
+        value={title}
         className="border-b pb-2 text-lg my-4 focus:outline-none w-full font-light text-gray-500 placeholder-gray-500 y-2"
       />
       <SimpleMDE
-        value={post.content}
+        value={content}
         onChange={(value) => setPost({ ...post, content: value })}
       />
 

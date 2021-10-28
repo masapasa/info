@@ -1,6 +1,6 @@
 import { GetStaticProps, GetStaticPaths } from "next";
 import { useRouter } from "next/router";
-import { API } from "@aws-amplify/api";
+import { API } from "aws-amplify";
 import ReactMarkdown from "react-markdown";
 import { listPosts, getPost } from "../../graphql/queries";
 

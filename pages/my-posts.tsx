@@ -1,10 +1,10 @@
 import Link from "next/link";
-import API from "@aws-amplify/api";
 import { useEffect, useState } from "react";
-import { listPosts } from "../graphql/queries";
+import { API, Auth } from "aws-amplify";
 import { Post } from "../models/post";
+import { postsByUsername } from "../graphql/queries";
 
-export default function Home() {
+export default function MyPosts() {
   const [posts, setPosts] = useState<Post[]>([]);
 
   useEffect(() => {
@@ -12,13 +12,12 @@ export default function Home() {
   }, []);
 
   async function fetchPosts() {
+    const { username } = await Auth.currentAuthenticatedUser();
     const postData = await API.graphql({
-      query: listPosts,
+      query: postsByUsername,
+      variables: { username },
     });
-
-    const { items } = postData.data.listPosts;
-    console.log("postData", items);
-    setPosts(items);
+    setPosts(postData.data.postsByUsername.items);
   }
 
   return (

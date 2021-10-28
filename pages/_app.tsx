@@ -1,17 +1,17 @@
-import Link from "next/link";
-import { useEffect, useState } from "react";
 import { AppProps } from "next/app";
-import { Hub } from "@aws-amplify/core";
-import Auth from "@aws-amplify/auth";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { Auth, Hub } from "aws-amplify";
 import "tailwindcss/tailwind.css";
 import "../configureAmplify";
 import "../styles/global.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [signedInUser, setSignedInUser] = useState(false);
+
   useEffect(() => {
     authListener();
-  });
+  }, []);
 
   async function authListener() {
     Hub.listen("auth", (data) => {
@@ -23,6 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         return setSignedInUser(false);
       }
     });
+
     try {
       await Auth.currentAuthenticatedUser();
       setSignedInUser(true);

@@ -11,7 +11,9 @@ function Profile() {
   }, []);
 
   async function checkUser() {
-    const user: { user: Post } = await Auth.currentAuthenticatedUser();
+    const user = await Auth.currentAuthenticatedUser();
+    console.log({ user });
+
     setUser(user);
   }
 

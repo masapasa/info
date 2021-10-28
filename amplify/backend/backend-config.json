@@ -6,17 +6,17 @@
       "output": {
         "authConfig": {
           "defaultAuthentication": {
-            "authenticationType": "AMAZON_COGNITO_USER_POOLS",
-            "userPoolConfig": {
-              "userPoolId": "authamplifynextc7de6536"
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 365,
+              "description": "public"
             }
           },
           "additionalAuthenticationProviders": [
             {
-              "authenticationType": "API_KEY",
-              "apiKeyConfig": {
-                "apiKeyExpirationDays": 365,
-                "description": "pulic"
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authamplifynext2acc4be9"
               }
             }
           ]
@@ -25,7 +25,7 @@
     }
   },
   "auth": {
-    "amplifynextc7de6536": {
+    "amplifynext2acc4be9": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],

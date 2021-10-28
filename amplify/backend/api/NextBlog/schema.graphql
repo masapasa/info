@@ -8,11 +8,11 @@ type Post
   @auth(
     rules: [
       { allow: owner, ownerField: "username" }
-      { allow: public, operations: [read], provider: apiKey }
+      { allow: public, operations: [read] }
     ]
   ) {
   id: ID!
   title: String!
-  content: String
+  content: String!
   username: String
 }
