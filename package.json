@@ -6,11 +6,11 @@
     "start": "next start"
   },
   "dependencies": {
-    "@aws-amplify/ui-react": "^1.2.21",
+    "@aws-amplify/ui-react": "^1.2.22",
     "@tailwindcss/typography": "^0.4.1",
-    "aws-amplify": "^4.3.3",
+    "aws-amplify": "^4.3.4",
     "easymde": "^2.15.0",
-    "next": "^12.0.1",
+    "next": "^12.0.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-markdown": "^7.1.0",
@@ -24,7 +24,7 @@
     "@types/uuid": "^8.3.1",
     "autoprefixer": "^10.4.0",
     "postcss": "^8.3.11",
-    "tailwindcss": "^2.2.17",
+    "tailwindcss": "^2.2.19",
     "typescript": "^4.4.4"
   }
 }

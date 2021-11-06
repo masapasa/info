@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 import SimpleMDE from "react-simplemde-editor";
 import "easymde/dist/easymde.min.css";
 import { createPost } from "../graphql/mutations";
-import { Post } from "../models/post";
+import type { Post } from "../models/post";
 
 const initialState: Post = {
   title: "",
