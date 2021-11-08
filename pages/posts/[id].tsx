@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Image from "next/image";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { API, Storage } from "aws-amplify";
 import ReactMarkdown from "react-markdown";
@@ -11,7 +12,7 @@ export default function Post({ post }: { post: PostModel }) {
 
   useEffect(() => {
     updateCoverImage();
-  }, []);
+  });
   async function updateCoverImage() {
     if (post.coverImage) {
       const imageKey = await Storage.get(post.coverImage);
@@ -32,13 +33,22 @@ export default function Post({ post }: { post: PostModel }) {
 
   return (
     <div>
-      <h1 className="text-5xl mt-4 font-semibold tracking-wide">
+      <h1 className="text-5xl mt-4 mb-4 font-semibold tracking-wide">
         {post.title}
       </h1>
-      {newCoverImage && <img src={newCoverImage} className="mt-4" />}
+      {newCoverImage && (
+        <Image
+          src={newCoverImage}
+          className="mt-4"
+          alt="cover image for the post"
+          width={800}
+          height={500}
+          layout="fixed"
+        />
+      )}
       <p className="text-sm font-light my-4">by {post.username}</p>
       <div className="mt-8">
-        <ReactMarkdown className="prose" children={post.content} />
+        <ReactMarkdown className="prose">{post.content}</ReactMarkdown>
       </div>
     </div>
   );

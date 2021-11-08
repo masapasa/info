@@ -1,8 +1,8 @@
 # Multi-stage Blogging site
 
-A user can read, create, edit, delete posts using `aws @auth` directives. Its owner and group-based authorization rules
+A user can read, create, edit, delete posts using `aws @auth` directives. Its owner and group-based authorization rules.
 
-Next.js 12 powered by the app and Tailwind has designed to looks amazing
+Next.js 12 powered by the app and Tailwind has designed to look amazing.
 
 - AWS Amplify
 - DynamoDB

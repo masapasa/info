@@ -1,12 +1,15 @@
 import { withAuthenticator } from "@aws-amplify/ui-react";
-import React, { useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
+import { useRouter } from "next/router";
+import Image from "next/image";
 import { API, Storage } from "aws-amplify";
 import { v4 as uuid } from "uuid";
-import { useRouter } from "next/router";
 import SimpleMDE from "react-simplemde-editor";
-import "easymde/dist/easymde.min.css";
 import { createPost } from "../graphql/mutations";
 import type { Post } from "../models/post";
+import dynamic from "next/dynamic";
+
+dynamic(() => import("codemirror/lib/codemirror"), { ssr: false });
 
 const initialState: Post = {
   title: "",
@@ -83,7 +86,16 @@ function CreatePost() {
         className="border-b pb-2 text-lg my-4 focus:outline-none w-full font-light text-gray-500 placeholder-gray-500 y-2"
       />
 
-      {image && <img src={URL.createObjectURL(image)} className="my-4" />}
+      {image && (
+        <Image
+          src={URL.createObjectURL(image)}
+          alt="cover image for the post"
+          className="my-4"
+          width={500}
+          height={500}
+          layout="fixed"
+        />
+      )}
 
       <SimpleMDE
         value={content}

@@ -2,9 +2,11 @@ import { AppProps } from "next/app";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { Auth, Hub } from "aws-amplify";
-import "tailwindcss/tailwind.css";
 import "../configureAmplify";
 import "../styles/global.css";
+import "tailwindcss/tailwind.css";
+import "easymde/dist/easymde.min.css";
+import "codemirror/lib/codemirror.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [signedInUser, setSignedInUser] = useState(false);
