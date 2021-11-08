@@ -36,17 +36,17 @@ function MyApp({ Component, pageProps }: AppProps) {
     <div>
       <nav className="p-6 border-b border-gray-300">
         <Link href="/">
-          <span className="mr-6 cursor-pointer">Home</span>
+          <a className="mr-6 cursor-pointer">Home</a>
         </Link>
         <Link href="/create-post">
-          <span className="mr-6 cursor-pointer">Create Post</span>
+          <a className="mr-6 cursor-pointer">Create Post</a>
         </Link>
         <Link href="/profile">
-          <span className="mr-6 cursor-pointer">Profile</span>
+          <a className="mr-6 cursor-pointer">Profile</a>
         </Link>
         {signedInUser && (
           <Link href="/my-posts">
-            <span className="mr-5 cursor-pointer">My Posts</span>
+            <a className="mr-5 cursor-pointer">My Posts</a>
           </Link>
         )}
       </nav>

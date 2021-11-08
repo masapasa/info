@@ -15,4 +15,5 @@ type Post
   title: String!
   content: String!
   username: String
+  coverImage: String
 }

@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "amplifynextappfb0a3e56_identitypool_fb0a3e56",
-    "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "ampliffb0a3e56",
-    "userPoolName": "amplifynextappfb0a3e56_userpool_fb0a3e56",
+    "identityPoolName": "nextblog0448f438_identitypool_0448f438",
+    "allowUnauthenticatedIdentities": true,
+    "resourceNameTruncated": "nextbl0448f438",
+    "userPoolName": "nextblog0448f438_userpool_0448f438",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -29,10 +29,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "ampliffb0a3e56_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "nextbl0448f438_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "fb0a3e56",
-    "resourceName": "amplifynextappfb0a3e56",
+    "sharedId": "0448f438",
+    "resourceName": "nextblog0448f438",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [

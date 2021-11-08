@@ -1,12 +1,31 @@
-import { GetStaticProps, GetStaticPaths } from "next";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { API } from "aws-amplify";
+import { GetStaticProps, GetStaticPaths } from "next";
+import { API, Storage } from "aws-amplify";
 import ReactMarkdown from "react-markdown";
 import { listPosts, getPost } from "../../graphql/queries";
+import type { Post as PostModel } from "../../models/post";
 
-export default function Post({ post }) {
+export default function Post({ post }: { post: PostModel }) {
+  const [newCoverImage, setNewCoverImage] = useState(null);
+
+  useEffect(() => {
+    updateCoverImage();
+  }, []);
+  async function updateCoverImage() {
+    if (post.coverImage) {
+      const imageKey = await Storage.get(post.coverImage);
+      console.log("imageKey ", imageKey);
+
+      setNewCoverImage(imageKey);
+
+      console.log(newCoverImage);
+    }
+  }
+
+  console.log(post);
+
   const router = useRouter();
-
   if (router.isFallback) {
     return <div>Loading...</div>;
   }
@@ -16,6 +35,7 @@ export default function Post({ post }) {
       <h1 className="text-5xl mt-4 font-semibold tracking-wide">
         {post.title}
       </h1>
+      {newCoverImage && <img src={newCoverImage} className="mt-4" />}
       <p className="text-sm font-light my-4">by {post.username}</p>
       <div className="mt-8">
         <ReactMarkdown className="prose" children={post.content} />
@@ -29,8 +49,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
     query: listPosts,
   });
 
-  console.log("postData", postData);
-
   const paths = postData.data.listPosts.items.map((post: { id: string }) => ({
     params: {
       id: post.id,
@@ -43,7 +61,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps: GetStaticProps<{ post: PostModel }> = async ({
+  params,
+}) => {
   const { id } = params;
   const postData = await API.graphql({
     query: getPost,
