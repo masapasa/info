@@ -38,11 +38,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Link href="/">
           <a className="mr-6 cursor-pointer">Home</a>
         </Link>
-        {signedInUser && (
-          <Link href="/create-post">
-            <a className="mr-6 cursor-pointer">Create Post</a>
-          </Link>
-        )}
+        <Link href="/create-post">
+          <a className="mr-6 cursor-pointer">Create Post</a>
+        </Link>
         <Link href="/profile">
           <a className="mr-6 cursor-pointer">Profile</a>
         </Link>

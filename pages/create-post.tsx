@@ -8,6 +8,9 @@ import SimpleMDE from "react-simplemde-editor";
 import { createPost } from "../graphql/mutations";
 import type { Post } from "../models/post";
 import "easymde/dist/easymde.min.css";
+require("codemirror/mode/xml/xml");
+require("codemirror/mode/javascript/javascript");
+require("codemirror/lib/codemirror");
 
 const initialState: Post = {
   title: "",
