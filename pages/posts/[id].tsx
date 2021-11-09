@@ -26,6 +26,10 @@ export default function Post({ post }: { post: PostModel }) {
 
   console.log(post);
 
+  if (typeof window !== "undefined") {
+    console.log("browser");
+  }
+
   const router = useRouter();
   if (router.isFallback) {
     return <div>Loading...</div>;

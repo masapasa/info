@@ -5,8 +5,6 @@ import { Auth, Hub } from "aws-amplify";
 import "../configureAmplify";
 import "../styles/global.css";
 import "tailwindcss/tailwind.css";
-import "easymde/dist/easymde.min.css";
-import "codemirror/lib/codemirror.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [signedInUser, setSignedInUser] = useState(false);
@@ -40,9 +38,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Link href="/">
           <a className="mr-6 cursor-pointer">Home</a>
         </Link>
-        <Link href="/create-post">
-          <a className="mr-6 cursor-pointer">Create Post</a>
-        </Link>
+        {signedInUser && (
+          <Link href="/create-post">
+            <a className="mr-6 cursor-pointer">Create Post</a>
+          </Link>
+        )}
         <Link href="/profile">
           <a className="mr-6 cursor-pointer">Profile</a>
         </Link>

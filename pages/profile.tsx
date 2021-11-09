@@ -1,7 +1,6 @@
 import Auth from "@aws-amplify/auth";
 import { AmplifySignOut, withAuthenticator } from "@aws-amplify/ui-react";
 import { useEffect, useState } from "react";
-import { Post } from "../models/post";
 
 function Profile() {
   const [user, setUser] = useState(null);
@@ -12,8 +11,6 @@ function Profile() {
 
   async function checkUser() {
     const user = await Auth.currentAuthenticatedUser();
-    console.log({ user });
-
     setUser(user);
   }
 

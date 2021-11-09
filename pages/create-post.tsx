@@ -1,26 +1,24 @@
+import { useRef, useState } from "react";
 import { withAuthenticator } from "@aws-amplify/ui-react";
-import React, { useMemo, useRef, useState } from "react";
-import { useRouter } from "next/router";
 import Image from "next/image";
-import { API, Storage } from "aws-amplify";
+import { useRouter } from "next/router";
 import { v4 as uuid } from "uuid";
+import { API, Storage } from "aws-amplify";
 import SimpleMDE from "react-simplemde-editor";
 import { createPost } from "../graphql/mutations";
 import type { Post } from "../models/post";
-import dynamic from "next/dynamic";
-
-dynamic(() => import("codemirror/lib/codemirror"), { ssr: false });
+import "easymde/dist/easymde.min.css";
 
 const initialState: Post = {
   title: "",
   content: "",
-  coverImage: null,
 };
 
 function CreatePost() {
   const [post, setPost] = useState<Post>(initialState);
   const [image, setImage] = useState<File>(null);
   const hiddenFileInput = useRef(null);
+  const { title, content } = post;
   const router = useRouter();
 
   function onChange(e: React.ChangeEvent<HTMLInputElement>): void {
@@ -71,7 +69,9 @@ function CreatePost() {
     hiddenFileInput.current.click();
   }
 
-  const { title, content } = post;
+  if (typeof window !== "undefined") {
+    console.log("browser");
+  }
 
   return (
     <div>
@@ -91,7 +91,7 @@ function CreatePost() {
           src={URL.createObjectURL(image)}
           alt="cover image for the post"
           className="my-4"
-          width={500}
+          width={800}
           height={500}
           layout="fixed"
         />
@@ -101,6 +101,7 @@ function CreatePost() {
         value={content}
         onChange={(value) => setPost({ ...post, content: value })}
       />
+
       <input
         type="file"
         ref={hiddenFileInput}
