@@ -41,5 +41,8 @@
       "textract": 1,
       "comprehend": 1
     }
+  },
+  "debug": {
+    "shareProjectConfig": true
   }
 }
